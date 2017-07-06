@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Category;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Word
  *
@@ -25,6 +26,10 @@ class Word
      * @var string
      *
      * @ORM\Column(name="word", type="string", length=255)
+     *  @Assert\Length(
+     *      min = 5,     
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",     
+     * )
      */
     private $word;
 
@@ -33,6 +38,7 @@ class Word
      * 
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * @Assert\NotBlank()
      */
     private $category;
 
@@ -40,6 +46,7 @@ class Word
      * @var string
      *
      * @ORM\Column(name="hint", type="text")
+     * @Assert\NotBlank()
      */
     private $hint;
 

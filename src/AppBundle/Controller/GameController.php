@@ -15,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class GameController extends Controller {
 
     /**
-     * @Route("/", name="game")
+     * @Route("/start", name="game")
      * @param Request $request
      */
     public function indexAction(Request $request) {
