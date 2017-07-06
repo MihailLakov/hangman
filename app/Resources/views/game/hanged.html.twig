@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h2>
+                        Bad luck! The word was <strong>{{ word }}</strong>.
+                    </h2>           
+                    <a href="{{ path('game_reset')}}" class="btn btn-lg btn-primary"> Start a new game </a>
+                </div>
+                <div class="col-xs-6">
+                    <img src="/img/0.png" alt="hangman" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12"> 
+                <div class="jumbotron">
+                    <h1>Category</h1>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ category.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Title</th>
+                                <td>{{ category.title }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ul>
+                        <li>
+                            <a href="{{ path('category_index') }}" class="btn btn-primary">Back to the list</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('category_edit', { 'id': category.id }) }}" class="btn btn-primary">Edit</a>
+                        </li>
+                        <li>
+                            {{ form_start(delete_form) }}
+                            <input type="submit" value="Delete" class="btn btn-danger">
+                            {{ form_end(delete_form) }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12"> 
+                <div class="jumbotron">
+                <h1>Admin panel</h1>                
+                <hr>
+                <a href="{{ path('word_index') }}" class="btn btn-lg btn-primary btn-block">Manage words</a>
+                <hr>
+                <a href="{{ path('category_index') }}" class="btn btn-lg btn-primary btn-block">Manage categories</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

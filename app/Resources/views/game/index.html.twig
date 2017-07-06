@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">           
+                <div class="col-xs-12 col-md-6"> 
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3>Guess the word</h3>
+                        </div>
+                        <div class="panel-body">                           
+                            <p class="attempts">
+                                <strong>Remaining attempts  <span class="label label-success">{{ game.remainingAttempts }}</span> </strong>
+                            </p>
+                            <hr>
+                             <p class="category">
+                                <strong>Category: </strong><span class="label label-default">{{game.category}}</span>
+                            </p>
+                            <hr>
+                            <p class="hint">
+                                <strong>HINT:</strong>  <span class="label label-info">{{ game.hint }}</span>
+                            </p>     
+                            <hr>
+                            <ul class="word_letters">
+                                {% for letter in game.wordLetters %}
+                                    <li class="letter {{ game.isLetterFound(letter) ? 'guessed' : '' }}">
+                                        {{ game.isLetterFound(letter) ? letter : '_' }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <hr>
+                            <p> <strong>Letters you already tried:</strong> 
+                                {% for letter in game.triedLetters %}
+                                    <span class="badge ">{{ letter}}</span>,
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 hidden-xs">
+                    <img src="/img/{{game.remainingAttempts}}.png" alt="hangman" class="img-responsive hangman">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>Try a letter</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            {{ form_start(form,{'action': path('try_letter')})}}
+                            {{ form_widget(form) }}
+                            <input type="submit" value="Submit" class="btn btn-lg btn-primary btn-block">
+                            {{ form_rest(form) }}
+                            {{ form_end(form) }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading"> 
+                        <h3>Try a word</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            {{ form_start(formWord,{'action': path('try_word')})}}
+                            {{ form_widget(formWord) }}
+                            <input type="submit" value="Submit" class="btn btn-lg btn-primary btn-block">
+                            {{ form_rest(formWord) }}
+                            {{ form_end(formWord) }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">        
+                        <h3>Reset game</h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="{{ path('game_reset') }}" class="btn btn-lg btn-info btn-block"><i class="glyphicon glyphicon-refresh"></i>Reset the game</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12"> 
+                <div class="jumbotron">
+                    <h1>Welcome to Hangman game</h1>     
+                    <hr>
+                    <a href="{{ path('game') }}" class="btn btn-lg btn-primary btn-block">Start a new game!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

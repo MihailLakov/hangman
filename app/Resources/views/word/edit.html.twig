@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12"> 
+                <div class="jumbotron">
+                    <h1>Word edit</h1>
+
+                    {{ form_start(edit_form) }}
+                    {{ form_widget(edit_form) }}
+                    <input type="submit" value="Edit" class="btn btn-primary"/>
+                    {{ form_end(edit_form) }}
+
+                    <ul>
+                        <li>
+                            <a href="{{ path('word_index') }}" class="btn btn-primary">Back to the list</a>
+                        </li>
+                        <li>
+                            {{ form_start(delete_form) }}
+                            <input type="submit" value="Delete" class="btn btn-danger">
+                            {{ form_end(delete_form) }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

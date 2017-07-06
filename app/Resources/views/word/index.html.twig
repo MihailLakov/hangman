@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12"> 
+                <div class="jumbotron">
+                    <h1>Words list</h1>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Word</th>
+                                <th>Category</th>
+                                <th>Hint</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for word in words %}
+                                <tr>
+                                    <td><a href="{{ path('word_show', { 'id': word.id }) }}" class="btn btn-primary">{{ word.id }}</a></td>
+                                    <td>{{ word.word }}</td>
+                                    <td>{{ word.category.title }}</td>
+                                    <td>{{ word.hint }}</td>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <a href="{{ path('word_show', { 'id': word.id }) }}" class="btn btn-primary">show</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('word_edit', { 'id': word.id }) }}" class="btn btn-primary">edit</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <ul>
+                        <li>
+                            <a href="{{ path('word_new') }}" class="btn btn-primary">Create a new word</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

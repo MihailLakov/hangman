@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>
+                        Your game statistics
+                    </h2> 
+                </div>
+                <div class="col-xs-12">
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th>Games played</th>
+                            <th>Games won</th>
+                            <th>Games lost</th>
+                            <th>Letters tried</th>
+                            <th>Whole words gussed</th>
+                        </tr>                        
+                        <tr class="info">
+                            <td>{% if stats.GamesPlayed %} {{ stats.GamesPlayed }} {% else %} {{ 0 }}{% endif %}</td>
+                            <td>{% if stats.GamesWon %} {{ stats.GamesWon }} {% else %} {{ 0 }} {% endif %}</td>
+                            <td>{% if stats.GamesLost %} {{ stats.GamesLost }} {% else %} {{ 0 }} {% endif %}</td>
+                            <td>{% if stats.LettersGuessed %} {{ stats.LettersGuessed }} {% else %} {{ 0 }} {% endif %}</td>
+                            <td>{% if stats.WholeWordsGuessed %} {{ stats.WholeWordsGuessed }} {% else %} {{ 0 }} {% endif %}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

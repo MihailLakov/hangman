@@ -1,0 +1,31 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 11
+    providers:
+        database_users:
+            entity: { class: AppBundle:User, property: email }
+    access_denied_url: '/error403'    
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~            
+            form_login:
+                login_path: security-login
+                check_path: security-login
+                
+            logout:
+                path:   security-logout
+                target: homepage
+    role_hierarchy:
+        ROLE_USER : ROLE_USER
+        ROLE_ADMIN: ROLE_USER

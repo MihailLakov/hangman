@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h1> 403 :(</h1>
+            <h2> You tried to access an unauthorised page, please log in to continue</h2>       
+            <div class="well">                     
+                <a href="{{path('security-login')}}" class="btn-lg btn-primary" style="margin: 0 auto; position:relative; display:block; max-width:380px;text-align:center;"> Log in with approriate credentials</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
